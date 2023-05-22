@@ -1,0 +1,6 @@
+.venv
+ecoli
+ecoli_out
+human
+parallel-fastq-dump.py
+*.sam
