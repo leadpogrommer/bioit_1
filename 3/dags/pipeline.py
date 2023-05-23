@@ -43,12 +43,16 @@ with DAG(
     )
 
     @task.branch(task_id="branch_on_quality")
-    def branch_func(ti=None):
-        val = float(ti.xcom_pull(task_ids='get_quality'))
-        if val >= 90:
-            return "sort"
-        else:
-            return "quality_bad"
+    def branch_func(ti=None, **kwargs):
+        with open(kwargs['params']['out_path']+'/pipeline_result_info.txt', 'w') as log_f:
+            val = float(ti.xcom_pull(task_ids='get_quality'))
+            print(f'Quality={val}%', file=log_f)
+            if val >= 90:
+                print(f'Quality is ok, proceeding', file=log_f)
+                return "sort"
+            else:
+                print(f'Quality is bad, stopping', file=log_f)
+                return "quality_bad"
         
     sort_task = BashOperator(
         task_id='sort',
@@ -57,7 +61,7 @@ with DAG(
 
     freebayes = BashOperator(
         task_id='freebayes',
-        bash_command="freebayes -f '{{ params.ref_path }}' '{{ params.out_path }}'/result.sorted.bam > '{{ params.out_path }}'/result.vcf"
+        bash_command="freebayes -f '{{ params.ref_path }}' '{{ params.out_path }}'/result.sorted.bam > '{{ params.out_path }}'/result.vcf && echo 'Finished, your results are in result.vcf file' >> '{{ params.out_path }}'/pipeline_result_info.txt"
     )
 
     quality_bad=EmptyOperator(task_id="quality_bad")

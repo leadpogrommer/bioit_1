@@ -1,0 +1,135 @@
+[2023-05-23T16:02:55.909+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.prepare_dir manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:02:55.911+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.prepare_dir manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:02:55.912+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:02:55.925+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): prepare_dir> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:02:55.926+0000] {standard_task_runner.py:57} INFO - Started process 518 to run task
+[2023-05-23T16:02:55.928+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'prepare_dir', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpr4f40mdx']
+[2023-05-23T16:02:55.929+0000] {standard_task_runner.py:85} INFO - Job 11: Subtask prepare_dir
+[2023-05-23T16:02:55.956+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.prepare_dir manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:02:56.078+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='prepare_dir' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:02:56.079+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-05-23T16:02:56.079+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', "mkdir -p '/host/ecoli_out' && find '/host/ecoli_out' -mindepth 1 -delete"]
+[2023-05-23T16:02:56.081+0000] {subprocess.py:86} INFO - Output:
+[2023-05-23T16:02:56.315+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-05-23T16:02:56.331+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=prepare_dir, execution_date=20230523T160223, start_date=20230523T160255, end_date=20230523T160256
+[2023-05-23T16:02:56.380+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:02:56.402+0000] {taskinstance.py:2651} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2023-05-23T16:02:57.689+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.bwa_id manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:02:57.692+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.bwa_id manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:02:57.693+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:02:57.710+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): bwa_id> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:02:57.712+0000] {standard_task_runner.py:57} INFO - Started process 524 to run task
+[2023-05-23T16:02:57.714+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'bwa_id', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpmzxb_l21']
+[2023-05-23T16:02:57.714+0000] {standard_task_runner.py:85} INFO - Job 12: Subtask bwa_id
+[2023-05-23T16:02:57.738+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.bwa_id manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:02:57.861+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='bwa_id' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:02:57.862+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-05-23T16:02:57.862+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', "bwa mem -t $(nproc) '/host/ecoli/ref/GCF_000005845.2_ASM584v2_genomic.fna' '/host/ecoli/wgs_4/SRR24482006.fastq.gz' > '/host/ecoli_out'/result.sam"]
+[2023-05-23T16:02:57.866+0000] {subprocess.py:86} INFO - Output:
+[2023-05-23T16:02:57.871+0000] {subprocess.py:93} INFO - [M::bwa_idx_load_from_disk] read 0 ALT contigs
+[2023-05-23T16:02:58.768+0000] {subprocess.py:93} INFO - [M::process] read 552988 sequences (160000077 bp)...
+[2023-05-23T16:03:01.496+0000] {subprocess.py:93} INFO - [M::process] read 552808 sequences (160000315 bp)...
+[2023-05-23T16:03:05.785+0000] {subprocess.py:93} INFO - [M::mem_process_seqs] Processed 552988 reads in 98.173 CPU sec, 7.017 real sec
+[2023-05-23T16:03:08.321+0000] {subprocess.py:93} INFO - [M::process] read 552638 sequences (160000317 bp)...
+[2023-05-23T16:03:12.717+0000] {subprocess.py:93} INFO - [M::mem_process_seqs] Processed 552808 reads in 99.032 CPU sec, 6.932 real sec
+[2023-05-23T16:03:14.142+0000] {subprocess.py:93} INFO - [M::process] read 112937 sequences (32338464 bp)...
+[2023-05-23T16:03:19.379+0000] {subprocess.py:93} INFO - [M::mem_process_seqs] Processed 552638 reads in 98.428 CPU sec, 6.663 real sec
+[2023-05-23T16:03:20.824+0000] {subprocess.py:93} INFO - [M::mem_process_seqs] Processed 112937 reads in 20.157 CPU sec, 1.445 real sec
+[2023-05-23T16:03:21.313+0000] {subprocess.py:93} INFO - [main] Version: 0.7.17-r1188
+[2023-05-23T16:03:21.313+0000] {subprocess.py:93} INFO - [main] CMD: bwa mem -t 16 /host/ecoli/ref/GCF_000005845.2_ASM584v2_genomic.fna /host/ecoli/wgs_4/SRR24482006.fastq.gz
+[2023-05-23T16:03:21.313+0000] {subprocess.py:93} INFO - [main] Real time: 23.444 sec; CPU: 316.867 sec
+[2023-05-23T16:03:21.318+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-05-23T16:03:21.334+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=bwa_id, execution_date=20230523T160223, start_date=20230523T160257, end_date=20230523T160321
+[2023-05-23T16:03:21.377+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:03:21.400+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-23T16:03:22.626+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.run_fastqc manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:22.629+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.run_fastqc manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:22.629+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:03:22.643+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): run_fastqc> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:03:22.644+0000] {standard_task_runner.py:57} INFO - Started process 661 to run task
+[2023-05-23T16:03:22.646+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'run_fastqc', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpatsohz24']
+[2023-05-23T16:03:22.646+0000] {standard_task_runner.py:85} INFO - Job 13: Subtask run_fastqc
+[2023-05-23T16:03:22.671+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.run_fastqc manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:03:22.797+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='run_fastqc' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:03:22.797+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-05-23T16:03:22.797+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', "fastqc -o '/host/ecoli_out' -t $(nproc) '/host/ecoli/wgs_4/SRR24482006.fastq.gz'"]
+[2023-05-23T16:03:22.800+0000] {subprocess.py:86} INFO - Output:
+[2023-05-23T16:03:22.877+0000] {subprocess.py:93} INFO - Started analysis of SRR24482006.fastq.gz
+[2023-05-23T16:03:23.562+0000] {subprocess.py:93} INFO - Approx 5% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:24.194+0000] {subprocess.py:93} INFO - Approx 10% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:24.784+0000] {subprocess.py:93} INFO - Approx 15% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:25.371+0000] {subprocess.py:93} INFO - Approx 20% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:25.956+0000] {subprocess.py:93} INFO - Approx 25% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:26.530+0000] {subprocess.py:93} INFO - Approx 30% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:27.106+0000] {subprocess.py:93} INFO - Approx 35% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:27.672+0000] {subprocess.py:93} INFO - Approx 40% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:28.257+0000] {subprocess.py:93} INFO - Approx 45% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:28.820+0000] {subprocess.py:93} INFO - Approx 50% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:29.400+0000] {subprocess.py:93} INFO - Approx 55% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:29.963+0000] {subprocess.py:93} INFO - Approx 60% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:30.555+0000] {subprocess.py:93} INFO - Approx 65% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:31.121+0000] {subprocess.py:93} INFO - Approx 70% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:31.707+0000] {subprocess.py:93} INFO - Approx 75% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:32.297+0000] {subprocess.py:93} INFO - Approx 80% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:32.882+0000] {subprocess.py:93} INFO - Approx 85% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:33.448+0000] {subprocess.py:93} INFO - Approx 90% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:34.034+0000] {subprocess.py:93} INFO - Approx 95% complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:34.590+0000] {subprocess.py:93} INFO - Analysis complete for SRR24482006.fastq.gz
+[2023-05-23T16:03:35.892+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-05-23T16:03:35.909+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=run_fastqc, execution_date=20230523T160223, start_date=20230523T160322, end_date=20230523T160335
+[2023-05-23T16:03:35.938+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:03:35.945+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-23T16:03:37.290+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.samtools_view manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:37.293+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.samtools_view manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:37.293+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:03:37.306+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): samtools_view> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:03:37.308+0000] {standard_task_runner.py:57} INFO - Started process 702 to run task
+[2023-05-23T16:03:37.310+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'samtools_view', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpa0p4qwcw']
+[2023-05-23T16:03:37.310+0000] {standard_task_runner.py:85} INFO - Job 14: Subtask samtools_view
+[2023-05-23T16:03:37.334+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.samtools_view manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:03:37.475+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='samtools_view' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:03:37.475+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-05-23T16:03:37.475+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', "samtools view --threads $(nproc) -b '/host/ecoli_out'/result.sam > '/host/ecoli_out'/result.bam"]
+[2023-05-23T16:03:37.479+0000] {subprocess.py:86} INFO - Output:
+[2023-05-23T16:03:38.568+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-05-23T16:03:38.583+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=samtools_view, execution_date=20230523T160223, start_date=20230523T160337, end_date=20230523T160338
+[2023-05-23T16:03:38.605+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:03:38.625+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-23T16:03:39.970+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.get_quality manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:39.973+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.get_quality manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:39.973+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:03:39.987+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): get_quality> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:03:39.988+0000] {standard_task_runner.py:57} INFO - Started process 728 to run task
+[2023-05-23T16:03:39.990+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'get_quality', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpasp29y35']
+[2023-05-23T16:03:39.990+0000] {standard_task_runner.py:85} INFO - Job 15: Subtask get_quality
+[2023-05-23T16:03:40.013+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.get_quality manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:03:40.142+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='get_quality' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:03:40.142+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-05-23T16:03:40.142+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'samtools flagstat --threads $(nproc) \'/host/ecoli_out\'/result.bam | python3 -c \'from sys import stdin; d=stdin.read(); import re; print(re.findall(r"\\d+\\s+\\+\\s+\\d+\\s+mapped\\s+\\((\\d+\\.\\d+)%", d)[0])\'']
+[2023-05-23T16:03:40.146+0000] {subprocess.py:86} INFO - Output:
+[2023-05-23T16:03:40.327+0000] {subprocess.py:93} INFO - 84.75
+[2023-05-23T16:03:40.329+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-05-23T16:03:40.353+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=get_quality, execution_date=20230523T160223, start_date=20230523T160339, end_date=20230523T160340
+[2023-05-23T16:03:40.402+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:03:40.421+0000] {taskinstance.py:2651} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-05-23T16:03:41.636+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bio_pipeline.branch_on_quality manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:41.639+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bio_pipeline.branch_on_quality manual__2023-05-23T16:02:23+00:00 [queued]>
+[2023-05-23T16:03:41.639+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 1
+[2023-05-23T16:03:41.652+0000] {taskinstance.py:1327} INFO - Executing <Task(_BranchPythonDecoratedOperator): branch_on_quality> on 2023-05-23 16:02:23+00:00
+[2023-05-23T16:03:41.654+0000] {standard_task_runner.py:57} INFO - Started process 753 to run task
+[2023-05-23T16:03:41.655+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'bio_pipeline', 'branch_on_quality', 'manual__2023-05-23T16:02:23+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmp3pxbs0df']
+[2023-05-23T16:03:41.656+0000] {standard_task_runner.py:85} INFO - Job 16: Subtask branch_on_quality
+[2023-05-23T16:03:41.683+0000] {task_command.py:410} INFO - Running <TaskInstance: bio_pipeline.branch_on_quality manual__2023-05-23T16:02:23+00:00 [running]> on host 483060a020e6
+[2023-05-23T16:03:41.822+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='bio_pipeline' AIRFLOW_CTX_TASK_ID='branch_on_quality' AIRFLOW_CTX_EXECUTION_DATE='2023-05-23T16:02:23+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-05-23T16:02:23+00:00'
+[2023-05-23T16:03:41.825+0000] {python.py:183} INFO - Done. Returned value was: quality_bad
+[2023-05-23T16:03:41.825+0000] {python.py:216} INFO - Branch callable return quality_bad
+[2023-05-23T16:03:41.825+0000] {skipmixin.py:161} INFO - Following branch quality_bad
+[2023-05-23T16:03:41.825+0000] {skipmixin.py:221} INFO - Skipping tasks ['sort']
+[2023-05-23T16:03:41.858+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=bio_pipeline, task_id=branch_on_quality, execution_date=20230523T160223, start_date=20230523T160341, end_date=20230523T160341
+[2023-05-23T16:03:41.907+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-05-23T16:03:41.920+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

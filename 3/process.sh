@@ -23,7 +23,6 @@ bwa mem -t "$NPROC" "$REF_PATH" "$FASTA_PATH" > "$OUT_PATH/result.sam"
 
 samtools view --threads "$NPROC" -b "$OUT_PATH/result.sam" > "$OUT_PATH/result.bam"
 
-# QUALITY="92.34"
 QUALITY=$(samtools flagstat --threads "$NPROC" "$OUT_PATH/result.bam" | python3 -c 'from sys import stdin; d=stdin.read(); import re; print(re.findall(r"\d+\s+\+\s+\d+\s+mapped\s+\((\d+\.\d+)%", d)[0])')
 echo "Quality = $QUALITY"
 
