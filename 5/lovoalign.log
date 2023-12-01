@@ -1,0 +1,52 @@
+
+  #######################################################################
+
+                                LOVOALIGN
+             Convergent algorithms for protein structural alignment
+     Martinez, Andreani, and Martinez, BMC Bioinformatics, 8:306, 2007
+                              Version 22.0.2 
+
+  #######################################################################
+  Problem specifications: 
+  -----------------------------------------------------------------------
+  Protein A: openfold.pdb
+  Protein B: omegafold.pdb
+  Number of atoms: A:         100  B:         100
+  Will maximize the TM-SCORE 
+  Penalization for gaps:    0.0000000000000000     
+  Maximum number of iterations:        10000
+  Using internal-distance initial point.
+  GDT Threshold:    4.0000000000000000     
+  -----------------------------------------------------------------------
+  TRIAL:       1 SCORE:      0.78733 COVERAGE:     96 GAPS:      6 GLOB: 1
+  TRIAL:       2 SCORE:      0.78824 COVERAGE:     96 GAPS:      6 GLOB: 1
+  TRIAL:       3 SCORE:      0.78831 COVERAGE:     96 GAPS:      6 GLOB: 1
+  TRIAL:       5 SCORE:      0.78831 COVERAGE:     96 GAPS:      6 GLOB: 1
+  Repeated best solution found     3 times at trial     8
+
+  ------------------------- SEQUENCE ALIGNMENT --------------------------
+            .         .         .         .         .
+          1 MKGMLTG-PVTILNWSWPREDITHEEQTKQLALAIRDEVLDLEAAGIKII    49
+          1 MKGMLTGPVTILNW-SWPREDITHEEQTKQLALAIRDEVLDLEAAGIKII    49
+            .         .         .         .         .
+         50 QIDEAAL--REKL-PLRKSDWHAKYLDWAIPAFRLVHSAVKPTTQIHTHM    96
+         50 QIDEAALREKLPLRKSDW-HA--KYLDWAIPAFRLVHSAVKPTTQIHTHM    96
+            .         .         .         .         .
+         97 CYSE                                                 100
+         97 CYSE                                                 100
+
+  -----------------------------------------------------------------------
+  FINAL SCORE:     0.788310  COVERAGE:    96  RMSD:   2.442825  GAPS:   6
+  Final score normalized by smallest protein:     0.788310
+  -----------------------------------------------------------------------
+  ATOMS CLOSER THAN   3.0000 Ang: RMSD:   1.262321 COVERAGE:     80
+  GDT_TS SCORE:   75.750          GDT_HA SCORE:   58.750
+  -----------------------------------------------------------------------
+  Time used in this alignment:   6.08600117E-03
+  -----------------------------------------------------------------------
+  END OF ALIGNMENT 
+  -----------------------------------------------------------------------
+  Wrote file: openfold_aligned_to_omegafold.pdb
+  -----------------------------------------------------------------------
+  TOTAL RUNNING TIME:    1.96829997E-02
+  -----------------------------------------------------------------------
